@@ -1,57 +1,92 @@
 <template>
-  <div id="app">
-    <div class="side-panel flexcol">
-      <h1 class="title neonText">UDRRA PROJ.</h1>
-    </div>
-    <div class="reg-panel flexcol">
-      <div class="dummy-div">
+  <Navbar/>
+  <div class="wrapper">
+    <Sidebar/>
+    <Stars>
+      <div id="app" :style="{ marginLeft: getSidebarWidth }">
 
+      <div class="side-panel flexcol">
+        <h1 class="title neonText">UDRRA PROJ.</h1>
       </div>
-    </div>
-<!--    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>-->
+
+      <div class="reg-panel flexcol">
+        <div class="dummy-div">
+
+        </div>
+      </div>
+      <!--    <router-link to="/">Home</router-link> |
+          <router-link to="/about">About</router-link>-->
+      </div>
+
+    </Stars>
   </div>
+
+
 <!--  <router-view/>-->
 </template>
 
+<script>
+import store from '@/store/index'
+import Sidebar from '@/components/Sidebar/Sidebar';
+import Navbar from '@/components/Navbar';
+import Stars from '@/components/Stars';
+import { mapGetters } from "vuex";
+
+export default {
+  name: "track-catalogue-page",
+  components: {
+    Sidebar,
+    Navbar,
+    Stars
+  },
+  methods: {
+    async loadAndSetTracks() {
+      const tracksAxios = store.getters.serverAccess
+      try {
+        const url = store.state.serverURL+"/tracks"
+        const response = await tracksAxios.get(url)
+        console.log(response)
+        return response
+      } catch (e) {
+        console.log(e)
+        return e
+      }
+    },
+  },
+  computed: {
+    ...mapGetters({
+      getSidebarWidth: "sidebar/getSidebarWidth",
+    }),
+  },
+  mounted() {
+    this.loadAndSetTracks();
+  },
+
+}
+</script>
+
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
-/*#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}*/
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  height:100%;
-  overflow: hidden;
+  height: 100%;
+
 }
-html, body {
-  width: 100%;
-  height:100%;
+
+.wrapper {
+  margin-top:80px;
+  width: 100vw;
+  height: 100vh;
 }
+
 body {
   font-family: 'Roboto', sans-serif, 'Franklin Gothic Medium', 'Arial Narrow', Arial;
   //color: #bc00ff;
@@ -72,24 +107,24 @@ body {
 
 .side-panel {
   height: 100%;
-  width: 35%;
+  /*width: 35%;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 0;*/
 }
 
 .reg-panel {
   height: 100%;
-  width: 65%;
+  /*width: 65%;
   position: absolute;
   top: 0;
-  left: 35%;
+  left: 35%;*/
 }
 
 .dummy-div {
   background-color: rgba(0,0,0,0.5);
-  width: 50%;
-  height: 50%;
+  width: 600px;
+  height: 600px;
 }
 
 .title {
