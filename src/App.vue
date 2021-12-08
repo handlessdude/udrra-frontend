@@ -3,15 +3,16 @@
 
     <Navbar/>
 
-    <div id="hz">
+    <div id="bottom-wrapper">
 
       <Sidebar/>
-
       <div class="rv-wrapper"
           :style="{ 'left': getSidebarWidth }">
         <router-view/>
       </div>
-
+<!--            <div class="rv-wrapper" :style="{ 'left': getSidebarWidth }">
+              <h1 class="neonText">всем привет</h1>
+            </div>-->
     </div>
 
   </div>
@@ -60,18 +61,20 @@ export default {
 <style>
 :root {
   --navbar-height:  60px;
+  --navbar-padding:  10px;
+  --sidebar-padding:  8px;
 }
 </style>
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
-
-html {
+html, body {
+  overflow: hidden;
+  margin: 0;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
-  display: flex;
-
+}
+html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Roboto', sans-serif, 'Franklin Gothic Medium', 'Arial Narrow', Arial;
@@ -81,34 +84,49 @@ html {
   animation: gradient 15s ease infinite;
 }
 #app {
-  display: flex;
-  flex-direction: column;
+  position: relative;
 }
-#hz {
-  text-align: center;
-  display: flex;
-  flex-direction: row;
+#bottom-wrapper {
 
+  position: absolute;
   width: 100vw;
-  height: calc(100vh - 60px);
+  height: calc(100vh - (var(--navbar-height) + 2*var(--navbar-padding)));
+  top: calc(var(--navbar-height) + 2*var(--navbar-padding));
   overflow: hidden;  /* makes the body non-scrollable (we will add scrolling to the sidebar and main content containers) */
-  margin: 0px;
+  margin: 0;
 }
 .rv-wrapper {
-  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
   height: 100%;
-  display: flex;
+  /*display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;*/
+
 }
-.wrapper {
+.page-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   overflow-y: auto;
 }
 
-.title {
-  font-size: 4.2rem;
-  margin: 100px;
+@keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
 }
+
 .neonText {
   color: #fff;
   text-shadow:
@@ -120,17 +138,6 @@ html {
       0 0 92px #0fa,
       0 0 102px #0fa,
       0 0 151px #0fa;
-}
-@keyframes gradient {
-  0% {
-    background-position: 0 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0 50%;
-  }
 }
 
 </style>

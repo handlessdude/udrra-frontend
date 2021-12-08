@@ -1,12 +1,10 @@
 <template>
   <div class="sidebar" :style="{ width: getSidebarWidth }">
 
-    <h1>
-      <span v-if="isCollapsed">
-        <div>U</div>
-      </span>
-      <span v-else>UDRRA</span>
-    </h1>
+
+      <div v-if="isCollapsed" class="letter">U</div>
+      <div v-else class="letter">UDRRA</div>
+
 
     <SidebarLink to="/" icon="fas fa-home">Home</SidebarLink>
     <SidebarLink to="/dashboard" icon="fas fa-columns">Dashboard</SidebarLink>
@@ -50,28 +48,30 @@ export default {
 
 <style lang="scss">
 .sidebar {
+  box-sizing: border-box;
   color: white;
   background-color: var(--sidebar-bg-color);
-  //float: left;
+  float: left;
   //position: fixed;
-  position:-webkit-sticky;
-  position:sticky;
+  position: absolute;
+  //top: var(--navbar-height);
+  top: 0;
   left:0;
-
+  bottom: 0;
   z-index: 100;
-  //top: 80px;
-  //left: 0;
-  //bottom: 0;
+
   padding: 0.5em;
   transition: 0.2s ease;
 
   //wtf
   display: flex;
   flex-direction: column;
-  width: 100%;
+
 }
-.sidebar h1 {
-  height: 2.5em;
+.letter {
+  font-size: 2.5em;
+  text-align: center;
 }
+
 
 </style>

@@ -43,27 +43,28 @@ export default {
   color: white;
   background-color: var(--navbar-bg-color);
   //float: top;
-  //position: fixed;
+  position: fixed;
   z-index: 9999;
-  //top: 0;
-  //left: 0;
-  //right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
 
-  position:-webkit-sticky;
+  /*position:-webkit-sticky;
   position:sticky;
   top:0;
-
+  right: 0;
+  left: 0;*/
   height: var(--navbar-height);
 
-  width: 100%;
+  //width: 100vw;
   //padding: 0.5em;
   display: flex;
   flex-direction: row;
   //justify-content: space-between;
   //align-items: center;
   //transition: 0.6s;
-  padding: 10px 10px;
-
+  //padding: 10px 10px;
+  padding: var(--navbar-padding) var(--navbar-padding);
 }
 
 .collapse-icon {

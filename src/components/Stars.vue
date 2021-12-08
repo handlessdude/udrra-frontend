@@ -44,9 +44,12 @@ export default {
 <style scoped lang="scss">
 
 .circles {
-  position: absolute;
+  //position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
+  top:0;
+  right: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
