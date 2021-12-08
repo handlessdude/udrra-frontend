@@ -1,35 +1,28 @@
 <template>
-  <Navbar/>
-  <div class="wrapper">
-    <Sidebar/>
-    <Stars>
-      <div id="app" :style="{ marginLeft: getSidebarWidth }">
+  <div id="app">
 
-      <div class="side-panel flexcol">
-        <h1 class="title neonText">UDRRA PROJ.</h1>
+    <Navbar/>
+
+    <div id="hz">
+
+      <Sidebar/>
+
+      <div class="rv-wrapper"
+          :style="{ 'left': getSidebarWidth }">
+        <router-view/>
       </div>
 
-      <div class="reg-panel flexcol">
-        <div class="dummy-div">
+    </div>
 
-        </div>
-      </div>
-      <!--    <router-link to="/">Home</router-link> |
-          <router-link to="/about">About</router-link>-->
-      </div>
-
-    </Stars>
   </div>
 
 
-<!--  <router-view/>-->
 </template>
 
 <script>
 import store from '@/store/index'
 import Sidebar from '@/components/Sidebar/Sidebar';
 import Navbar from '@/components/Navbar';
-import Stars from '@/components/Stars';
 import { mapGetters } from "vuex";
 
 export default {
@@ -37,7 +30,6 @@ export default {
   components: {
     Sidebar,
     Navbar,
-    Stars
   },
   methods: {
     async loadAndSetTracks() {
@@ -65,70 +57,57 @@ export default {
 }
 </script>
 
+<style>
+:root {
+  --navbar-height:  60px;
+}
+</style>
+
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
-#app {
+html {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-
-}
-
-.wrapper {
-  margin-top:80px;
-  width: 100vw;
-  height: 100vh;
-}
-
-body {
   font-family: 'Roboto', sans-serif, 'Franklin Gothic Medium', 'Arial Narrow', Arial;
-  //color: #bc00ff;
   line-height: 1.6;
-  //background: linear-gradient(45deg, #bd4141, #e73c7e, #23a6d5, #23d5ab);
-  //background: linear-gradient(45deg, #25414d, #380c49, #8b1785,#52ccd3);
   background: linear-gradient(45deg, #010a01, #0a1517, #0d2525, #0a1d21);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
-
-.flexcol {
+#app {
   display: flex;
   flex-direction: column;
+}
+#hz {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+
+  width: 100vw;
+  height: calc(100vh - 60px);
+  overflow: hidden;  /* makes the body non-scrollable (we will add scrolling to the sidebar and main content containers) */
+  margin: 0px;
+}
+.rv-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-
-.side-panel {
-  height: 100%;
-  /*width: 35%;
-  position: absolute;
-  top: 0;
-  left: 0;*/
-}
-
-.reg-panel {
-  height: 100%;
-  /*width: 65%;
-  position: absolute;
-  top: 0;
-  left: 35%;*/
-}
-
-.dummy-div {
-  background-color: rgba(0,0,0,0.5);
-  width: 600px;
-  height: 600px;
+.wrapper {
+  overflow-y: auto;
 }
 
 .title {
   font-size: 4.2rem;
+  margin: 100px;
 }
 .neonText {
   color: #fff;

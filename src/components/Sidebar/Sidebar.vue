@@ -48,20 +48,27 @@ export default {
 }
 </style>
 
-<style scoped>
+<style lang="scss">
 .sidebar {
   color: white;
   background-color: var(--sidebar-bg-color);
-  float: left;
-  position: fixed;
+  //float: left;
+  //position: fixed;
+  position:-webkit-sticky;
+  position:sticky;
+  left:0;
+
   z-index: 100;
-  top: 80px;
-  left: 0;
-  bottom: 0;
+  //top: 80px;
+  //left: 0;
+  //bottom: 0;
   padding: 0.5em;
   transition: 0.2s ease;
+
+  //wtf
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .sidebar h1 {
   height: 2.5em;
