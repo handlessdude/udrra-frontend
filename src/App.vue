@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import store from '@/store/index'
 import Sidebar from '@/components/Sidebar/Sidebar';
 import Navbar from '@/components/Navbar';
 import { mapGetters } from "vuex";
@@ -32,27 +31,13 @@ export default {
     Sidebar,
     Navbar,
   },
-  methods: {
-    async loadAndSetTracks() {
-      const tracksAxios = store.getters.serverAccess
-      try {
-        const url = store.state.serverURL+"/tracks"
-        const response = await tracksAxios.get(url)
-        console.log(response)
-        return response
-      } catch (e) {
-        console.log(e)
-        return e
-      }
-    },
-  },
   computed: {
     ...mapGetters({
       getSidebarWidth: "sidebar/getSidebarWidth",
     }),
   },
   mounted() {
-    this.loadAndSetTracks();
+    console.log('hello vue!');
   },
 
 }

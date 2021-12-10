@@ -8,7 +8,7 @@
 
     <SidebarLink to="/" icon="fas fa-home">Home</SidebarLink>
     <SidebarLink to="/dashboard" icon="fas fa-columns">Dashboard</SidebarLink>
-
+    <SidebarLink to="/catalogue" icon="fab fa-odnoklassniki-square">Dashboard</SidebarLink>
 
   </div>
 </template>
@@ -40,9 +40,12 @@ export default {
 
 <style>
 :root {
-  --sidebar-bg-color: #2f855a;
+  /*--sidebar-bg-color: #2f855a;
   --sidebar-item-hover: #38a169;
-  --sidebar-item-active: #276749;
+  --sidebar-item-active: #276749;*/
+  --sidebar-bg-color: #276749;
+  --sidebar-item-hover: #2f855a;
+  --sidebar-item-active: #38a169;
 }
 </style>
 
@@ -61,7 +64,7 @@ export default {
   z-index: 100;
 
   padding: 0.5em;
-  transition: 0.2s ease;
+  transition: 0.15s ease;
 
   //wtf
   display: flex;
