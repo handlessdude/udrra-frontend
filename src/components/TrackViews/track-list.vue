@@ -74,7 +74,7 @@ export default {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 3rem;
     row-gap: 3rem;
-  }
+    }
   }
   @media (max-width: 800px){
     .track-list-grid{
