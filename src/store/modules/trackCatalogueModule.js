@@ -17,7 +17,8 @@ export const trackCatalogueModule = {
             const tracksAxios = store.getters.serverAccess
             try {
                 commit("setLoading", true)
-                const url = store.state.serverURL+"/tracks"
+                //const url = store.state.serverURL+"/tracks"
+                const url = "http://127.0.0.1:3000/api/v1/tracks"
                 const response = await tracksAxios.get(url)
                 commit('setTracks', response.data)
                 console.log(response.data)

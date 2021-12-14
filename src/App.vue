@@ -48,6 +48,7 @@ export default {
   --navbar-height:  60px;
   --navbar-padding:  10px;
   --sidebar-padding:  8px;
+  --rv-wrapper-padding:  40px;
 }
 </style>
 
@@ -89,15 +90,24 @@ html {
   /*display: flex;
   justify-content: center;
   align-items: center;*/
-
+  overflow-y: auto;
+  padding: 0 var(--rv-wrapper-padding) var(--rv-wrapper-padding) var(--rv-wrapper-padding);
 }
-.page-wrapper {
+.stretch-wrapper {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   overflow-y: auto;
+}
+
+.centr-flex-container {
+  display: flex;
+  justify-content: center;
+  //align-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 @keyframes gradient {
@@ -123,6 +133,15 @@ html {
       0 0 92px #0fa,
       0 0 102px #0fa,
       0 0 151px #0fa;
+}
+
+.neonBox {
+  color: #fff;
+  text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 42px #0fa,
+      0 0 82px #0fa;
 }
 
 </style>

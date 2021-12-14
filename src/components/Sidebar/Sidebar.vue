@@ -7,7 +7,6 @@
 
 
     <SidebarLink to="/" icon="fas fa-home">Home</SidebarLink>
-    <SidebarLink to="/dashboard" icon="fas fa-columns">Dashboard</SidebarLink>
     <SidebarLink to="/catalogue" icon="fab fa-odnoklassniki-square">Dashboard</SidebarLink>
 
   </div>

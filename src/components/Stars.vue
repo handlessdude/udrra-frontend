@@ -79,8 +79,6 @@ export default {
 
 .circles li:nth-child(1) {
   left: 25%;
-  /*width: 80px;
-  height: 80px;*/
   width: var(--side80);
   height:var(--side80);
   animation-delay: 0s;
@@ -92,8 +90,6 @@ export default {
 
 .circles li:nth-child(2) {
   left: 10%;
-  /*width: 20px;
-  height: 20px;*/
   width: var(--side20);
   height:var(--side20);
   animation-delay: 0s;
@@ -105,8 +101,6 @@ export default {
 
 .circles li:nth-child(3) {
   left: 70%;
-  /*width: 20px;
-  height: 20px;*/
   width: var(--side20);
   height:var(--side20);
   animation-delay: 0s;
@@ -118,8 +112,6 @@ export default {
 
 .circles li:nth-child(4) {
   left: 40%;
-  /*width: 60px;
-  height: 60px;*/
   width: var(--side60);
   height:var(--side60);
   animation-delay: 0s;
@@ -131,8 +123,6 @@ export default {
 
 .circles li:nth-child(5) {
   left: 65%;
-  /*width: 20px;
-  height: 20px;*/
   width: var(--side20);
   height:var(--side20);
   animation-delay: 0s;
@@ -144,8 +134,6 @@ export default {
 
 .circles li:nth-child(6) {
   left: 75%;
-  /*width: 90px;
-  height: 90px;*/
   width: var(--side90);
   height:var(--side90);
   animation-delay: 0s;
@@ -157,8 +145,6 @@ export default {
 
 .circles li:nth-child(7) {
   left: 35%;
-  /*width: 50px;
-  height: 50px;*/
   width: var(--side50);
   height:var(--side50);
   animation-delay: 0s;
@@ -170,8 +156,6 @@ export default {
 
 .circles li:nth-child(8) {
   left: 50%;
-  /*width: 25px;
-  height: 25px;*/
   width: var(--side25);
   height:var(--side25);
   animation-delay: 0s;
@@ -183,8 +167,6 @@ export default {
 
 .circles li:nth-child(9) {
   left: 20%;
-  /*width: 15px;
-  height: 15px;*/
   width: var(--side15);
   height:var(--side15);
   animation-delay: 0s;
@@ -196,8 +178,6 @@ export default {
 
 .circles li:nth-child(10) {
   left: 85%;
-  /*width: 50px;
-  height: 50px;*/
   width: var(--side50);
   height:var(--side50);
   animation-delay: 0s;

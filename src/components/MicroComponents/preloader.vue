@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="centr-flex-container stretch-wrapper">
   <h3 v-if="placeholder">Загружаем {{placeholder}}...</h3>
   <div class="circles">
     <div class="circle1"></div>
@@ -33,16 +33,7 @@ export default {
 }
 </script>
 
-<style scoped>
-.container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-content: space-between;
-  align-items: center;
-  flex-direction: column;
-}
+<style scoped lang="scss">
 
 .circles {
   width:300px;
