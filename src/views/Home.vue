@@ -5,7 +5,7 @@
       <div class="page-wrapper">
 
         <div class="side-panel">
-          <h1 class="title neonText">UDRRA PROJ. всем привеееееет</h1>
+          <h1 class="title neonText">UDRRA PROJ.</h1>
         </div>
 
         <div class="reg-panel">
@@ -29,12 +29,12 @@ export default {
 </script>
 
 <style lang="scss">
-/*.page-wrapper {
+.page-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-}*/
+}
 .side-panel {
   height: 100%;
   width: 35%;
