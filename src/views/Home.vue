@@ -5,7 +5,7 @@
       <div class="page-wrapper">
 
         <div class="side-panel">
-          <h1 class="title neonText">UDRRA PROJ.всем тест</h1>
+          <h1 class="title neonText">UDRRA PROJ.</h1>
         </div>
 
         <div class="reg-panel">
@@ -32,27 +32,29 @@ export default {
 .page-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
+  align-items: stretch;
 }
 .side-panel {
-  height: 100%;
+  /*height: 100%;
   width: 35%;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 0;*/
   display: flex;
+  justify-content: flex-start;
   align-items: center;
 }
 .reg-panel {
-  height: 100%;
+  /*height: 100%;
   position: absolute;
   top: 0;
   left: 35%;
-  width: 65%;
+  width: 65%;*/
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  flex-grow: 2;
 }
 .dummy-div {
   background-color: rgba(0,0,0,0.5);
@@ -70,5 +72,21 @@ export default {
   margin-left: 80px;
 }
 
+@media (max-width: 1100px){
+  .page-wrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .side-panel {
+    justify-content: center;
+  }
+  .reg-panel {
+    flex-grow: 1;
+  }
+  .title {
+    margin: 3rem auto 3rem auto;
+  }
+}
 
 </style>
