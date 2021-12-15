@@ -60,7 +60,6 @@ export default {
   justify-content: center;
   align-items: center;
   flex-grow: 2;
-
 }
 .dummy-div {
   background-color: rgba(0,0,0,0.5);
@@ -83,6 +82,8 @@ export default {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    left: 0;
+    right: 0;
   }
   .side-panel {
     justify-content: center;
