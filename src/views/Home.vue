@@ -34,6 +34,7 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
+  height: 100%;
 }
 .side-panel {
   /*height: 100%;
@@ -44,6 +45,7 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  height: 100%;
 }
 .reg-panel {
   /*height: 100%;
@@ -55,6 +57,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-grow: 2;
+  height: 100%;
 }
 .dummy-div {
   background-color: rgba(0,0,0,0.5);
@@ -69,7 +72,7 @@ export default {
 
 .title {
   font-size: 4.2rem;
-  margin-left: 80px;
+  margin: auto 3rem auto 3rem;
 }
 
 @media (max-width: 1100px){
