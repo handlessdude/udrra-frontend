@@ -5,7 +5,7 @@
       <div class="page-wrapper">
 
         <div class="side-panel">
-          <h1 class="title neonText">UDRRA PROJ.</h1>
+          <h1 class="title neonText">UDRRA PROJ.всем тест</h1>
         </div>
 
         <div class="reg-panel">
