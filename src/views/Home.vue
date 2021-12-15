@@ -35,6 +35,9 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
 }
 .side-panel {
   /*height: 100%;
