@@ -33,7 +33,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: center;
   height: 100%;
 }
 .side-panel {
@@ -45,7 +45,7 @@ export default {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 100%;
+  margin: auto 3rem;
 }
 .reg-panel {
   /*height: 100%;
@@ -57,7 +57,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-grow: 2;
-  height: 100%;
+
 }
 .dummy-div {
   background-color: rgba(0,0,0,0.5);
@@ -72,7 +72,7 @@ export default {
 
 .title {
   font-size: 4.2rem;
-  margin: auto 3rem auto 3rem;
+  //margin: auto 3rem auto 3rem;
 }
 
 @media (max-width: 1100px){
@@ -83,12 +83,13 @@ export default {
   }
   .side-panel {
     justify-content: center;
+    margin: 3rem auto 3rem auto;
   }
   .reg-panel {
     flex-grow: 1;
   }
   .title {
-    margin: 3rem auto 3rem auto;
+    //margin: 3rem auto 3rem auto;
   }
 }
 
