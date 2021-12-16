@@ -1,4 +1,3 @@
-import store from '@/store/index';
 import axios from "axios";
 //const api_url = store.state.serverURL+"/tracks";
 //const tracksAxios = store.state.serverAccess
@@ -14,12 +13,16 @@ export const trackCatalogueModule = {
     },
     actions: {
         async fetchTracks({ commit }) {
-            const tracksAxios = store.getters.serverAccess
             try {
                 commit("setLoading", true)
                 //const url = store.state.serverURL+"/tracks"
-                const url = "http://127.0.0.1:3000/api/v1/tracks"
-                const response = await tracksAxios.get(url)
+                const url = process.env.VUE_APP_ROOT_API+"/tracks"
+                const response = await axios.get(url, {
+                    headers: {
+                        "accept": "application/json",
+                        //"Content-Type": "application/json",
+                    }
+                })
                 commit('setTracks', response.data)
                 console.log(response.data)
                 return response
@@ -31,7 +34,8 @@ export const trackCatalogueModule = {
             }
         },
         async addTodo({ commit }, title) {
-            const url = store.state.serverURL+"/tracks"
+            //const url = store.state.serverURL+"/tracks"
+            const url = process.env.VUE_APP_ROOT_API+"/tracks"
             const response = await axios.post(url,
                 {
                     todo: {
@@ -42,7 +46,8 @@ export const trackCatalogueModule = {
             commit('newTodo', response.data);
         },
         async deleteTrack({ commit, state }, trackId) {
-            const url = store.state.serverURL+"/tracks"
+            //const url = store.state.serverURL+"/tracks"
+            const url = process.env.VUE_APP_ROOT_API+"/tracks"
             try {
                 await axios.delete(url + `/${trackId}`);
                 //commit("setTracks", state.tracks.filter(t => t.id !== trackId))
