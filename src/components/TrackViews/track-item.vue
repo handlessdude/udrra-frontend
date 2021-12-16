@@ -2,7 +2,7 @@
   <div
     class="track-item"
     @click="$router.push(`/tracks/${track.id}`)"
-    :style="{  backgroundImage: `url(https://images.unsplash.com/photo-1465433045946-ba6506ce5a59?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)`}"
+    :style="{  backgroundImage: `url(${track.preview_picture})`}"
   >
 
   <div class="track-list-item-bl">

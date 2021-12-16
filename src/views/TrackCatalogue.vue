@@ -36,7 +36,11 @@ export default {
   mounted() {
     this.fetchTracks()
     console.log(process.env)
-  }
+  },
+  /*created() {
+    this.fetchTracks()
+    console.log(process.env)
+  }*/
 }
 </script>
 
