@@ -20,7 +20,6 @@ export const trackCatalogueModule = {
                 const response = await axios.get(url, {
                     headers: {
                         "accept": "application/json",
-                        'Access-Control-Allow-Origin': '*',
                         //"Content-Type": "application/json",
                     }
                 })
