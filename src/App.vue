@@ -50,11 +50,19 @@ export default {
   --navbar-padding:  10px;
   --sidebar-padding:  8px;
   --rv-wrapper-padding:  40px;
+  --magenta: #f09;
+  --red:#ff002f;
+  --lazure: #0fa;
+  --white: #fff;
 }
 </style>
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Yellowtail:400');
+@import url('https://fonts.googleapis.com/css?family=Vibur:400');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Roboto:wght@100&display=swap');
+
 html, body {
   overflow: hidden;
   margin: 0;
@@ -74,7 +82,6 @@ html {
   position: relative;
 }
 #bottom-wrapper {
-
   position: absolute;
   width: 100vw;
   height: calc(100vh - (var(--navbar-height) + 2*var(--navbar-padding)));
@@ -88,9 +95,6 @@ html {
   bottom: 0;
   right: 0;
   height: 100%;
-  /*display: flex;
-  justify-content: center;
-  align-items: center;*/
   overflow-y: auto;
   padding: 0 var(--rv-wrapper-padding) var(--rv-wrapper-padding) var(--rv-wrapper-padding);
 }
@@ -124,25 +128,25 @@ html {
 }
 
 .neonText {
-  color: #fff;
+  color: var(--white);
   text-shadow:
-      0 0 7px #fff,
-      0 0 10px #fff,
-      0 0 21px #fff,
-      0 0 42px #0fa,
-      0 0 82px #0fa,
-      0 0 92px #0fa,
-      0 0 102px #0fa,
-      0 0 151px #0fa;
+      0 0 7px var(--white),
+      0 0 10px var(--white),
+      0 0 21px var(--white),
+      0 0 42px var(--lazure),
+      0 0 82px var(--lazure),
+      0 0 92px var(--lazure),
+      0 0 102px var(--lazure),
+      0 0 151px var(--lazure);
 }
 
 .neonBox {
-  color: #fff;
+  color: var(--white);
   text-shadow:
-      0 0 7px #fff,
-      0 0 10px #fff,
-      0 0 42px #0fa,
-      0 0 82px #0fa;
+      0 0 7px var(--white),
+      0 0 10px var(--white),
+      0 0 42px var(--lazure),
+      0 0 82px var(--lazure);
 }
 .neonText,.smolNeonText {
   -webkit-user-select: none; /* Safari */
@@ -153,9 +157,21 @@ html {
 .title {
   font-size: 4.2rem;
   //margin: auto 3rem auto 3rem;
+
 }
 .smolTitle {
   font-size: 1.5rem;
   //margin: auto 3rem auto 3rem;
+}
+.titlem .smolTitle{
+  text-align: center;
+}
+
+.flex-centred-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 </style>

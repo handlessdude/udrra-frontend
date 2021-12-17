@@ -42,22 +42,12 @@ export default {
   right: 0;
 }
 .side-panel {
-  /*height: 100%;
-  width: 35%;
-  position: absolute;
-  top: 0;
-  left: 0;*/
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin: auto 3rem;
 }
 .reg-panel {
-  /*height: 100%;
-  position: absolute;
-  top: 0;
-  left: 35%;
-  width: 65%;*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,14 +73,18 @@ export default {
     right: 0;
   }
   .side-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     margin: 3rem auto 3rem auto;
+    text-align: center;
   }
   .reg-panel {
     flex-grow: 1;
   }
   .title {
-    //margin: 3rem auto 3rem auto;
+    margin: 0 auto 3rem auto;
   }
 }
 
