@@ -144,5 +144,18 @@ html {
       0 0 42px #0fa,
       0 0 82px #0fa;
 }
-
+.neonText,.smolNeonText {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+.title {
+  font-size: 4.2rem;
+  //margin: auto 3rem auto 3rem;
+}
+.smolTitle {
+  font-size: 1.5rem;
+  //margin: auto 3rem auto 3rem;
+}
 </style>

@@ -74,11 +74,6 @@ export default {
   justify-content: center;
 }
 
-.title {
-  font-size: 4.2rem;
-  //margin: auto 3rem auto 3rem;
-}
-
 @media (max-width: 1100px){
   .page-wrapper {
     flex-direction: column;
