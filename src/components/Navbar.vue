@@ -32,7 +32,8 @@ export default {
 
 <style>
 :root {
-  --navbar-bg-color:  #131019;
+
+  --navbar-bg-color:  #121212;
   --navbar-item-hover: #38a169;
   --navbar-item-active: #276749;
 }

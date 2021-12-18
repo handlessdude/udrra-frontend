@@ -95,9 +95,31 @@ html {
   bottom: 0;
   right: 0;
   height: 100%;
-  overflow-y: auto;
   padding: 0 var(--rv-wrapper-padding) var(--rv-wrapper-padding) var(--rv-wrapper-padding);
+  overflow-y: auto;
 }
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0) rgba(72, 72, 72);
+}
+
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  //background: rgba(255, 255, 255, 0.29);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(72, 72, 72);
+  border-radius: 5px;
+}
+
 .stretch-wrapper {
   position: absolute;
   top: 0;
