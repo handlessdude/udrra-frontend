@@ -9,7 +9,8 @@ export default createStore({
     serverAccess: state => axios.create({
       baseURL: state.serverURL,
       headers: {
-        //here would go token
+        "accept": "application/json",
+        "Content-Type": "application/json",
       }
     }),
   }),
@@ -21,7 +22,8 @@ export default createStore({
     serverAccess: state => axios.create({
       baseURL: state.serverURL,
       headers: {
-        //here would go token
+        "accept": "application/json",
+        "Content-Type": "application/json",
       }
     }),
   },

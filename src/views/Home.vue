@@ -29,30 +29,39 @@ export default {
 </script>
 
 <style lang="scss">
-/*.page-wrapper {
+.page-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-}*/
-.side-panel {
   height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.side-panel {
+  /*height: 100%;
   width: 35%;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 0;*/
   display: flex;
+  justify-content: flex-start;
   align-items: center;
+  margin: auto 3rem;
 }
 .reg-panel {
-  height: 100%;
+  /*height: 100%;
   position: absolute;
   top: 0;
   left: 35%;
-  width: 65%;
+  width: 65%;*/
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  flex-grow: 2;
 }
 .dummy-div {
   background-color: rgba(0,0,0,0.5);
@@ -67,8 +76,27 @@ export default {
 
 .title {
   font-size: 4.2rem;
-  margin-left: 80px;
+  //margin: auto 3rem auto 3rem;
 }
 
+@media (max-width: 1100px){
+  .page-wrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    left: 0;
+    right: 0;
+  }
+  .side-panel {
+    justify-content: center;
+    margin: 3rem auto 3rem auto;
+  }
+  .reg-panel {
+    flex-grow: 1;
+  }
+  .title {
+    //margin: 3rem auto 3rem auto;
+  }
+}
 
 </style>
