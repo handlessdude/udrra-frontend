@@ -9,7 +9,7 @@
         </div>
 
         <div class="reg-panel">
-          <div class="dummy-div">here would go registration form</div>
+          <Signup/>
         </div>
 
       </div>
@@ -20,10 +20,12 @@
 
 <script>
 import Stars from '@/components/Stars';
+import Signup from '@/components/UserForm/Signup';
 export default {
   name: 'Home',
   components: {
-    Stars
+    Stars,
+    Signup
   }
 }
 </script>
