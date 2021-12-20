@@ -46,16 +46,20 @@
 
         <div class="input-container">
           <i class="fa fa-key icon within-input"></i>
-          <div class="flex-centred-col">
-            <input type="password" id="password" v-model="form.password.value" @blur="form.password.blur">
-            <div class="small-wrapper">
-              <small v-if="form.password.touched && form.password.errors.required">Password field is required</small>
-              <small v-else-if="form.password.touched && form.password.errors.minLength">
-                Password length can't be less then 8. Now it is {{form.password.value.length}}.
-              </small>
-            </div>
-            <input type="password" v-model="password2" @blur="form.password.blur">
-          </div>
+          <input type="password" id="password" v-model="form.password.value" @blur="form.password.blur">
+        </div>
+
+        <div class="small-wrapper">
+          <small v-if="form.password.touched && form.password.errors.required">Password field is required</small>
+          <small v-else-if="form.password.touched && form.password.errors.minLength">
+            Password length can't be less then 8. Now it is {{form.password.value.length}}.
+          </small>
+        </div>
+
+        <div class="input-container">
+          <!-- lol -->
+          <i class="fa fa-key icon within-input" style="visibility: hidden;"></i>
+          <input type="password" v-model="password2" @blur="form.password.blur">
         </div>
 
         <div class="small-wrapper">
@@ -63,6 +67,7 @@
             Passwords do not match.
           </small>
         </div>
+
       </div>
 
 
