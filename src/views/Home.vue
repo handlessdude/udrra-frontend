@@ -10,7 +10,21 @@
 
         <div class="reg-panel">
           <div class="form-wrapper">
-            <Signup/>
+            <div class="h-wrapper flex-centred-row">
+              <div class="hoverable smolShadowed"
+                   :class="{ 'pseudo-h1': isSignup, 'pseudo-h3': !isSignup }"
+                   @click="toggleSignup(true)"
+              >Sign up</div>
+
+              <div class="slash">/</div>
+
+              <div class="hoverable smolShadowed"
+                   :class="{ 'pseudo-h1': !isSignup, 'pseudo-h3': isSignup }"
+                   @click="toggleSignup(false)"
+              >Sign in</div>
+            </div>
+            <Signup v-if="isSignup"/>
+            <Signin v-else/>
           </div>
 
         </div>
@@ -24,16 +38,58 @@
 <script>
 import Stars from '@/components/Stars';
 import Signup from '@/components/UserForm/Signup';
+import Signin from "../components/UserForm/Signin";
 export default {
   name: 'Home',
+  data() {
+    return {
+      isSignup: true //else Signin
+    }
+  },
   components: {
     Stars,
-    Signup
-  }
+    Signup,
+    Signin,
+  },
+  methods: {
+    toggleSignup(val) {
+      this.isSignup = val;
+    },
+
+  },
 }
 </script>
 
 <style lang="scss">
+
+.smolShadowed:hover{
+  text-shadow:
+      0 0 4px var(--white),
+      0 0 11px var(--white),
+      0 0 14px var(--white);
+}
+.pseudo-h1 {
+  font-size: 2em;
+  //font-weight: bolder;
+  //text-decoration: underline;
+}
+.pseudo-h3 {
+  font-size: 1.17em;
+  //font-weight: bolder;
+}
+.pseudo-h1, .pseudo-h3{
+  font-weight: bolder;
+  //transition-property: text-shadow, font-size, text-decoration;
+  transition-property: text-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+}
+
+.slash {
+  margin: 5px;
+  font-size: 1.3em;
+  color: #00ffaa;
+}
 .page-wrapper {
   display: flex;
   flex-direction: row;
@@ -59,15 +115,23 @@ export default {
   flex-grow: 2;
 }
 .form-wrapper {
+  position: relative;
   background-color: rgba(0,0,0,0.5);
   font-size: 1.3em;
   padding: 3rem;
   border-radius: 4px;
-  h1 {
-    margin: 0 auto 3rem auto;
+  .pseudo-h1, .pseudo-h3 {
+    color: var(--lazure);
+    margin: 0;
   }
 }
-
+.h-wrapper {
+  margin: 0 auto 3rem auto;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
 @media (max-width: 1100px){
   .page-wrapper {
     flex-direction: column;

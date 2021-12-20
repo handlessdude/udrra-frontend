@@ -124,6 +124,14 @@ html {
   text-align: center;
 }
 
+.flex-centred-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 /* Works on Firefox */
 * {
   scrollbar-width: thin;
@@ -195,4 +203,7 @@ html {
   text-align: center;
 }
 
+.hoverable:hover {
+  cursor: pointer;
+}
 </style>
