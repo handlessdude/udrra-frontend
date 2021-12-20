@@ -99,27 +99,6 @@ html {
   overflow-y: auto;
 }
 
-/* Works on Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0) rgba(72, 72, 72);
-}
-
-
-/* Works on Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 5px;
-}
-
-*::-webkit-scrollbar-track {
-  //background: rgba(255, 255, 255, 0.29);
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: rgba(72, 72, 72);
-  border-radius: 5px;
-}
-
 .stretch-wrapper {
   position: absolute;
   top: 0;
@@ -135,6 +114,34 @@ html {
   //align-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.flex-centred-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0) rgba(72, 72, 72);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  //background: rgba(255, 255, 255, 0.29);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(72, 72, 72);
+  border-radius: 5px;
 }
 
 @keyframes gradient {
@@ -179,21 +186,13 @@ html {
 .title {
   font-size: 4.2rem;
   //margin: auto 3rem auto 3rem;
-
 }
 .smolTitle {
   font-size: 1.5rem;
   //margin: auto 3rem auto 3rem;
 }
-.titlem .smolTitle{
+.title .smolTitle{
   text-align: center;
 }
 
-.flex-centred-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
 </style>

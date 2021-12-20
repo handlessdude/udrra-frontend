@@ -1,29 +1,41 @@
 <template>
-  <div class="container">
+  <div class="flex-centred-col">
 
-    <pre>
+<!--    <pre>
       {{form}}
-    </pre>
+    </pre>-->
 
     <form class="card" @submit.prevent="submit">
-      <h1>Auth</h1>
+      <h1>Sign up</h1>
 
       <h3 v-if="error">{{error}}</h3>
 
       <div class="form-control" :class="{invalid: !form.email.valid && form.email.touched}">
         <label for="email">Email</label>
         <input type="email" id="email" v-model="form.email.value" @blur="form.email.blur">
-        <small v-if="form.email.touched && form.email.errors.required">Email field is required</small>
+
+        <div class="small-wrapper">
+          <small v-if="form.email.touched && form.email.errors.required">
+            Email field is required
+          </small>
+          <small v-else-if="form.email.touched && form.email.errors.strIsEmail">
+            Incorrect email format.
+          </small>
+        </div>
+
       </div>
 
       <div class="form-control" :class="{invalid: !form.password.valid && form.password.touched}">
         <label for="password">Password</label>
         <input type="password" id="password" v-model="form.password.value" @blur="form.password.blur">
-        <small v-if="form.password.touched && form.password.errors.required">Password field is required</small>
-        <small v-else-if="form.password.touched && form.password.errors.minLength">
-          Password length can't be less then 8. Now it is {{form.password.value.length}}.
-        </small>
+        <div class="small-wrapper">
+          <small v-if="form.password.touched && form.password.errors.required">Password field is required</small>
+          <small v-else-if="form.password.touched && form.password.errors.minLength">
+            Password length can't be less then 8. Now it is {{form.password.value.length}}.
+          </small>
+        </div>
       </div>
+
 
       <button class="btn primary" type="submit" :disabled="!form.valid">Submit</button>
     </form>
@@ -35,7 +47,7 @@
 <script>
 import { ref, onErrorCaptured } from 'vue'
 import { useForm } from './UserFormHooks/useForm'
-import {required, minLength} from '@/helpers/validators'
+import {required, minLength, strIsEmail} from '@/helpers/validators'
 
 export default {
   setup() {
@@ -45,7 +57,7 @@ export default {
     const { form, isFormValid, resetForm } = useForm({
       email: {
         value: '',
-        validators: {required}
+        validators: { required, strIsEmail }
       },
       password: {
         value: '',
@@ -72,8 +84,5 @@ export default {
 }
 </script>
 <style>
-pre {
-  color: #00ffaa;
-}
 
 </style>

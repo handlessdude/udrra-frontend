@@ -9,7 +9,10 @@
         </div>
 
         <div class="reg-panel">
-          <Signup/>
+          <div class="form-wrapper">
+            <Signup/>
+          </div>
+
         </div>
 
       </div>
@@ -55,15 +58,14 @@ export default {
   align-items: center;
   flex-grow: 2;
 }
-.dummy-div {
+.form-wrapper {
   background-color: rgba(0,0,0,0.5);
-  width: 500px;
-  height: 600px;
-  color: #fff;
-  font-size: 1.6em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 1.3em;
+  padding: 3rem;
+  border-radius: 4px;
+  h1 {
+    margin: 0 auto 3rem auto;
+  }
 }
 
 @media (max-width: 1100px){
@@ -84,10 +86,31 @@ export default {
   }
   .reg-panel {
     flex-grow: 1;
+    align-items: flex-start;
   }
   .title {
-    margin: 0 auto 3rem auto;
+    margin: 0 auto 0 auto;
   }
+}
+
+pre {
+  color: #00ffaa;
+}
+
+.card {
+  overflow: hidden;
+  color: #00ffaa;
+}
+.small-wrapper {
+  height: 2.2em;
+}
+
+small {
+  font-size: 0.75em;
+}
+
+.btn {
+  margin-top: 2em;
 }
 
 </style>
