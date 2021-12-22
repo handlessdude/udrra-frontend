@@ -1,7 +1,7 @@
 <template>
   <div class="flex-centred-col">
 
-    <form class="card" @submit.prevent="submit">
+    <form class="card" @submit.prevent="handleLogin">
 
       <h3 v-if="error">{{error}}</h3>
 
@@ -44,6 +44,8 @@
 import { ref, onErrorCaptured } from 'vue'
 import { useForm } from './UserFormHooks/useForm'
 import { required } from '@/helpers/validators'
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 
 export default {
   setup() {
@@ -61,22 +63,54 @@ export default {
       }
     })
 
-    function submit() {
+    const message = ref('')
+    const successful = ref(false)
+    const loading = ref(true)
+    const store = useStore()
+    const router = useRouter()
+
+    function handleLogin() {
       console.log('Email: ', form.email.value, '\nPassword: ', form.password.value)
-      submitted.value = true
+
+      loading.value = true;
+
+      store.dispatch("auth/login", {
+        email: form.email.value,
+        password: form.password.value
+      }).then(
+          () => {
+            //message.value = data.message
+            successful.value = true
+            loading.value = false
+            submitted.value = true
+            router.push("/tracks")
+          },
+          (error) => {
+            loading.value = false;
+            message.value =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString()
+          }
+      )
     }
+
 
     onErrorCaptured(e => {
       error.value = e.message
     })
 
-    return { form,
+    return {
+      form,
       isFormValid,
       resetForm ,
-      submit,
+      handleLogin,
       submitted,
       error }
   },
+
 }
 </script>
 <style lang="scss">

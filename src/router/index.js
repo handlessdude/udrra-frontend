@@ -8,12 +8,17 @@ const routes = [
     component: Home
   },
   {
-    path: '/catalogue',
+    path: '/tracks',
     name: 'TrackCatalogue',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "catalogue" */ '../views/TrackCatalogue.vue')
+    component: () => import(/* webpackChunkName: "tracks" */ '../views/TrackCatalogue.vue')
+  },
+  {
+    path: '/tracks/:id',
+    name: 'Track',
+    component: () => import(/* webpackChunkName: "track" */ '../views/Track.vue')
   },
   {
     path: '/about',
@@ -28,14 +33,23 @@ const routes = [
     name: "NotFound",
     component: () => import(/!* webpackChunkName: "NotFound" *!/ '../views/NotFound.vue')
   }*/
-  {
+  /*{
     path: "/:catchAll(.*)",
     name: "NotFound",
-    component:  () => import(/* webpackChunkName: "NotFound" */ '../views/NotFound.vue'),
+    component:  () => import(/!* webpackChunkName: "NotFound" *!/ '../views/NotFound.vue'),
     meta: {
       requiresAuth: false
     }
-  }
+  }*/
+  {
+    path: '/404',
+    name: 'NotFound',
+    component: () => import(/* webpackChunkName: "NotFound" */ '../views/NotFound.vue')
+  },
+  {
+    path: '/:catchAll(.*)',
+    redirect: { name: 'NotFound' }
+  },
 ]
 
 const router = createRouter({

@@ -1,7 +1,7 @@
 <template>
-<!--  <div class="page-wrapper">-->
+
     <Stars>
-<!--      <div class="row">-->
+
       <div class="page-wrapper">
 
         <div class="side-panel">
@@ -30,9 +30,9 @@
         </div>
 
       </div>
-<!--      </div>-->
+
     </Stars>
-<!--  </div>-->
+
 </template>
 
 <script>
@@ -55,7 +55,17 @@ export default {
     toggleSignup(val) {
       this.isSignup = val;
     },
-
+  },
+  computed: {
+    loggedIn() {
+      return this.$store.state.auth.status.loggedIn
+    },
+  },
+  mounted() {
+    console.log(this.$store.state.auth.status)
+    if (this.loggedIn) {
+      this.$router.push("/tracks")
+    }
   },
 }
 </script>

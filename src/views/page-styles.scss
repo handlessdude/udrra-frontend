@@ -1,0 +1,28 @@
+.preview-picture{
+  height: auto;
+  min-height: 150px;
+  margin-bottom: 3rem;
+  color: var(--white);
+  background-size: cover;
+
+  position: relative;
+  row-gap: 20px;
+  padding: 30px;
+}
+
+.track-info {
+  //font-size: 1.17em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  //width: 100%;
+  height: 40%;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: absolute;
+  text-align: left;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color:rgba(0,0,0,.4);
+}

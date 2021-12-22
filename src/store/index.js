@@ -1,34 +1,31 @@
 import { createStore } from 'vuex'
-import axios from "axios";
+//import axios from "axios"
 import { sidebarModule } from '@/store/modules/sidebarModule'
-import { trackCatalogueModule } from '@/store/modules/trackCatalogueModule';
+import { trackCatalogueModule } from '@/store/modules/trackCatalogueModule'
+import {trackModule} from "@/store/modules/trackModule"
+import { authModule } from "@/store/modules/authModule"
 
 export default createStore({
   state: () => ({
-    serverURL: "http://127.0.0.1:3000/api/v1",
-    serverAccess: state => axios.create({
-      baseURL: state.serverURL,
-      headers: {
-        "accept": "application/json",
-        "Content-Type": "application/json",
-      }
-    }),
+
   }),
   mutations: {
   },
   actions: {
   },
   getters: {
-    serverAccess: state => axios.create({
-      baseURL: state.serverURL,
+    /*serverAccess: state => axios.create({
+      baseURL: process.env.VUE_APP_ROOT_API,
       headers: {
         "accept": "application/json",
         "Content-Type": "application/json",
       }
-    }),
+    }),*/
   },
   modules: {
     sidebar: sidebarModule,
     trackCatalogue: trackCatalogueModule,
+    track: trackModule,
+    auth: authModule,
   }
 })

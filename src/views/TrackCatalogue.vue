@@ -8,7 +8,6 @@
         :tracks="allTracks"
         v-if="!loading"
     />
-
   </div>
   <preloader v-else></preloader>
 </template>
@@ -24,6 +23,7 @@ export default {
   methods: {
     ...mapActions({
       fetchTracks: "trackCatalogue/fetchTracks",
+      //deleteTrack: "trackCatalogue/deleteTrack",
     }),
 
   },
@@ -37,10 +37,6 @@ export default {
     this.fetchTracks()
     console.log(process.env)
   },
-  /*created() {
-    this.fetchTracks()
-    console.log(process.env)
-  }*/
 }
 </script>
 

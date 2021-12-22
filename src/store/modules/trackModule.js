@@ -1,18 +1,40 @@
 import axios from "axios";
 //const api_url = store.state.serverURL+"/tracks";
 //const tracksAxios = store.state.serverAccess
-
-export const trackCatalogueModule = {
+import { useRoute } from 'vue-router'
+export const trackModule = {
     state: () => ({
-        tracks: [],
+        track: {},
         loading: false,
     }),
     getters: {
-        allTracks: (state) => state.tracks,
+        track: (state) => state.track,
         loading: (state) => state.loading,
     },
     actions: {
-        async fetchTracks({ commit }) {
+        async fetchTrack({ commit }) {
+            try {
+                commit("setLoading", true)
+                const route = useRoute()
+                const trackId = route.params.id
+                const url = process.env.VUE_APP_ROOT_API+ `/tracks/${trackId}`
+                const response = await axios.get(url, {
+                    headers: {
+                        "accept": "application/json",
+                        //"Content-Type": "application/json",
+                    }
+                })
+                commit('setTrack', response.data)
+                console.log(response.data)
+                return response
+            } catch (e) {
+                console.log(e)
+                return e
+            } finally {
+                commit("setLoading", false)
+            }
+        },
+        /*async fetchTracks({ commit }) {
             try {
                 commit("setLoading", true)
                 //const url = store.state.serverURL+"/tracks"
@@ -24,7 +46,6 @@ export const trackCatalogueModule = {
                     }
                 })
                 commit('setTracks', response.data)
-                console.log(response)
                 console.log(response.data)
                 return response
             } catch (e) {
@@ -39,7 +60,7 @@ export const trackCatalogueModule = {
             const url = process.env.VUE_APP_ROOT_API+"/tracks"
             const response = await axios.post(url,
                 {
-                    todo: {
+                    track: {
                         title,
                         completed: false
                     }
@@ -57,19 +78,10 @@ export const trackCatalogueModule = {
                 console.log(e)
                 return e
             }
-        },
+        },*/
     },
     mutations: {
-        setTracks: (state, tracks) => (state.tracks = tracks),
-        /*newTrack: (state, track) => (state.tracks.unshift(track)),
-        removeTrack: (state, id) =>
-            (state.tracks.filter(track => track.id !== id)),
-        setUpdatedTrack: (state, updatedTrack) => {
-            const index = state.tracks.findIndex(track => track.id === updatedTrack.id);
-            if (index !== -1) {
-                state.tracks.splice(index, 1, updatedTrack);
-            }
-        },*/
+        setTrack: (state, track) => (state.track = track),
         setLoading(state, bool) {
             state.loading = bool
         },
