@@ -13,7 +13,7 @@
                  @click="toggleSignup(true)"
             >Sign up</div>
 
-            <div class="slash">/</div>
+            <div class="slash within-input">|</div>
 
             <div class="hoverable smolShadowed"
                  :class="{ 'pseudo-h1': !isSignup, 'pseudo-h3': isSignup }"
@@ -60,24 +60,22 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$store.state.auth.status)
-    if (this.loggedIn) {
-      this.$router.push("/home")
-    }
+
   },
 }
 </script>
 
 <style lang="scss">
+@import "../styles/user-form-styles.scss";
+
 
 .smolShadowed:hover{
+  //transform: scale(1.01);
   text-shadow:
-      0 0 4px var(--white),
-      0 0 11px var(--white),
-      0 0 14px var(--white);
+      0 0 4px var(--white);
 }
 .pseudo-h1 {
-  font-size: 2em;
+  font-size: 1.8em;
   //font-weight: bolder;
   //text-decoration: underline;
 }
@@ -94,22 +92,15 @@ export default {
 }
 
 .slash {
-  margin: 5px;
+  //margin: 5px;
   font-size: 1.3em;
   color: #00ffaa;
+  margin: auto 0px auto 0px;
+  min-width: 2rem;
+  max-height: var(--input-max-height);
+  text-align: center;
 }
-.page-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
+
 .side-panel {
   display: flex;
   justify-content: flex-start;
@@ -126,7 +117,8 @@ export default {
   position: relative;
   background-color: rgba(0,0,0,0.5);
   font-size: 1.3em;
-  padding: 3rem;
+  //padding: 2rem;
+  padding: 2em 2em 2em 1.5em;
   border-radius: 4px;
   .pseudo-h1, .pseudo-h3 {
     color: var(--lazure);
@@ -134,35 +126,11 @@ export default {
   }
 }
 .h-wrapper {
-  margin: 0 auto 3rem auto;
+  margin: 0 auto 2em auto;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
-}
-@media (max-width: 1100px){
-  .page-wrapper {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    left: 0;
-    right: 0;
-  }
-  .side-panel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 3rem auto 3rem auto;
-    text-align: center;
-  }
-  .reg-panel {
-    flex-grow: 1;
-    align-items: flex-start;
-  }
-  .title {
-    margin: 0 auto 0 auto;
-  }
 }
 
 pre {
@@ -174,7 +142,7 @@ pre {
   color: #00ffaa;
 }
 .small-wrapper {
-  height: 2.2em;
+  height: 2em;
 }
 
 small {
@@ -182,7 +150,7 @@ small {
 }
 
 .btn {
-  margin-top: 2em;
+  //margin-top: 2em;
 }
 
 </style>

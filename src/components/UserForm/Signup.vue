@@ -180,7 +180,7 @@ export default {
 
         message.value = authResponse.message
         successful.value = authResponse.success
-        await router.push("/tracks")
+        await router.push("/")
       } catch (error) {
         message.value =
             (error.response && error.response.data && error.response.data.message) ||
@@ -211,17 +211,6 @@ export default {
 }
 </script>
 <style lang="scss">
-.input-container {
-  display: flex;
-  width: 100%;
-}
-
-//TODO, MAKE ICONS HAVE WHITE BACKGROUND
-.within-input {
-  padding: 10px 10px 10px 0;
-  min-width: 50px;
-  min-height: 1em;
-  text-align: center;
-}
+//@import "../../styles/user-form-styles.scss";
 
 </style>

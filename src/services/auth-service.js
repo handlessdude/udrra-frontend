@@ -8,8 +8,9 @@ class AuthService {
                 password: user.password
             })
             .then(response => {
-                if (response.data.accessToken) {
-                    localStorage.setItem('user', JSON.stringify(response.data))
+                console.log('in auth service response.data.data: ', response.data.data)
+                if (response.data.data.accessToken) {
+                    localStorage.setItem('user', JSON.stringify(response.data.data))
                 }
                 //console.log("response.data = ", response.data)
                 return response.data.data
@@ -17,6 +18,7 @@ class AuthService {
     }
 
     logout() {
+        console.log('LOGING OUT FROM THE APP!')
         localStorage.removeItem('user');
     }
 

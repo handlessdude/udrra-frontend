@@ -73,41 +73,16 @@ export default {
 
       loading.value = true
 
-      /*store.dispatch("auth/login", {
-        login: form.login.value,
-        password: form.password.value
-      }).then(
-          () => {
-            //message.value = data.message
-            successful.value = true
-            loading.value = false
-            submitted.value = true
-            router.push("/tracks")
-          },
-          (error) => {
-            loading.value = false
-            message.value =
-                (error.response &&
-                    error.response.data &&
-                    error.response.data.message) ||
-                error.message ||
-                error.toString()
-          }
-      )*/
-
       try {
         const response = await store.dispatch('auth/login', {
-          /*auth: {
-            login: form.login.value,
-            password: form.password.value
-          },*/
           login: form.login.value,
           password: form.password.value,
         })
         message.value = response.message
         successful.value = true
         submitted.value = true
-        await router.push("/tracks")
+        //console.log(response)
+        await router.push("/")
       } catch (error) {
         message.value =
             (error.response && error.response.data && error.response.data.message) ||
@@ -116,9 +91,9 @@ export default {
         successful.value = false
       } finally {
         loading.value = false
-        console.log('signin!\nsubmitted: ', submitted.value,
+        /*console.log('signin!\nsubmitted: ', submitted.value,
             '| success: ', successful.value,
-            '| message: ', message.value)
+            '| message: ', message.value)*/
       }
     }
 
@@ -138,16 +113,6 @@ export default {
 }
 </script>
 <style lang="scss">
-.input-container {
-  display: flex;
-  width: 100%;
-}
-
-//TODO, MAKE ICONS HAVE WHITE BACKGROUND
-.within-input {
-  padding: 10px 10px 10px 0;
-  min-width: 50px;
-  text-align: center;
-}
+//@import "../../styles/user-form-styles.scss";
 
 </style>

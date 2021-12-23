@@ -1,13 +1,20 @@
 <template>
   <div class="navbar">
-    <span
-        class="collapse-icon"
-        :class="{ 'rotate-180': isCollapsed }"
+    <div
+        class="navbar-icon collapse-icon hoverable"
         @click="toggleSidebar"
+        :class="{ 'rotate-180': isCollapsed }"
     >
       <i class="fas fa-angle-double-left"></i>
-    </span>
-<!--    <div>всем привет</div>-->
+    </div>
+
+    <div  v-if="currentUser"
+          class="navbar-icon log-out-icon hoverable"
+          @click="logOut"
+    >
+      <i class="fas fa-door-open"></i>
+    </div>
+
   </div>
 </template>
 
@@ -21,12 +28,21 @@ export default {
     ...mapMutations({
       toggleSidebar: "sidebar/toggleSidebar",
     }),
+    logOut() {
+      this.$store.dispatch('auth/logout')
+      this.$router.push('/auth')
+    }
   },
   computed: {
     ...mapState({
       isCollapsed: (state) => state.sidebar.isCollapsed,
     }),
+    currentUser() {
+      return this.$store.state.auth.user
+    },
   },
+
+
 }
 </script>
 
@@ -43,44 +59,30 @@ export default {
 .navbar {
   color: white;
   background-color: var(--navbar-bg-color);
-  //float: top;
   position: fixed;
   z-index: 9999;
   top: 0;
   left: 0;
   right: 0;
-
-  /*position:-webkit-sticky;
-  position:sticky;
-  top:0;
-  right: 0;
-  left: 0;*/
   height: var(--navbar-height);
-
-  //width: 100vw;
-  //padding: 0.5em;
   display: flex;
   flex-direction: row;
-  //justify-content: space-between;
-  //align-items: center;
-  //transition: 0.6s;
-  //padding: 10px 10px;
   padding: var(--navbar-padding) var(--navbar-padding);
 }
-
-.collapse-icon {
-  position: fixed;
-  //top: 0;
-  //bottom: 0;
-  left: 0.75em;
-  //padding: 0.75em;
+.navbar-icon {
+  position: absolute;
   padding: 0.75em 0.75em;
   color: rgba(255, 255, 255, 0.7);
   transition: 0.2s linear;
 }
-.collapse-icon:hover {
-  cursor: pointer;
+.navbar-icon:hover {
   color: white;
+}
+.collapse-icon {
+  left: 0.75em;
+}
+.log-out-icon {
+  right: 0.75em;
 }
 .rotate-180 {
   transform: rotate(180deg);

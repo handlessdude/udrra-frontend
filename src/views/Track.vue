@@ -55,6 +55,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import './page-styles.scss';
-
+//@import './page-styles.scss';
+@import '../styles/page-styles.scss';
+pre {
+  color: var(--lazure);
+}
 </style>

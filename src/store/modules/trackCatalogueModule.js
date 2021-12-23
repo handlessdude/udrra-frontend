@@ -2,6 +2,7 @@ import axios from "axios";
 //const api_url = store.state.serverURL+"/tracks";
 //const tracksAxios = store.state.serverAccess
 import { useStore } from 'vuex'
+import { useRouter } from "vue-router"
 
 export const trackCatalogueModule = {
     state: () => ({
@@ -14,6 +15,7 @@ export const trackCatalogueModule = {
     },
     actions: {
         async fetchTracks({ commit }) {
+            const router = useRouter()
             try {
                 commit("setLoading", true)
                 //const url = store.state.serverURL+"/tracks"
@@ -35,6 +37,7 @@ export const trackCatalogueModule = {
                 return response.data.data
             } catch (e) {
                 console.log(e)
+                await router.push('/404')
                 return e
             } finally {
                 commit("setLoading", false)

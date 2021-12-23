@@ -1,17 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import Auth from "../views/Auth.vue"
 
 const routes = [
   {
     path: '/auth',
     name: 'Auth',
-    component: Auth
+    component: () => import(/* webpackChunkName: "auth" */ '../views/Auth.vue')
   },
   {
     path: '/',
     name: 'Home',
     component: Home
+
   },
   {
     path: '/tracks',
@@ -48,6 +48,21 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const publicPages = [ '/auth', '/about' ]
+  const authRequired = !publicPages.includes(to.path)
+  const loggedIn = localStorage.getItem('user')
+
+  //console.log(to, from, next)
+  // trying to access a restricted page + not logged in
+  // redirect to login page
+  if (authRequired && !loggedIn) {
+    next('/auth')
+  } else {
+    next()
+  }
 })
 
 export default router

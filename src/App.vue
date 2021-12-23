@@ -57,6 +57,7 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Yellowtail:400');
 @import url('https://fonts.googleapis.com/css?family=Vibur:400');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Roboto:wght@100&display=swap');
+@import './styles/text-styles.scss';
 
 html, body {
   overflow: hidden;
@@ -94,6 +95,42 @@ html {
   overflow-y: auto;
 }
 
+.page-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+@media (max-width: 1100px){
+  .page-wrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    left: 0;
+    right: 0;
+  }
+  .side-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem auto 3rem auto;
+    text-align: center;
+  }
+  .reg-panel {
+    flex-grow: 1;
+    align-items: flex-start;
+  }
+  .title {
+    margin: 0 auto 0 auto;
+  }
+}
 .stretch-wrapper {
   position: absolute;
   top: 0;
@@ -157,45 +194,6 @@ html {
   100% {
     background-position: 0 50%;
   }
-}
-
-.neonText {
-  color: var(--white);
-  text-shadow:
-      0 0 7px var(--white),
-      0 0 10px var(--white),
-      0 0 21px var(--white),
-      0 0 42px var(--lazure),
-      0 0 82px var(--lazure),
-      0 0 92px var(--lazure),
-      0 0 102px var(--lazure),
-      0 0 151px var(--lazure);
-}
-
-.neonBox {
-  color: var(--white);
-  text-shadow:
-      0 0 7px var(--white),
-      0 0 10px var(--white),
-      0 0 42px var(--lazure),
-      0 0 82px var(--lazure);
-}
-.neonText,.smolNeonText {
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
-  user-select: none; /* Standard */
-}
-.title {
-  font-size: 4.2rem;
-  //margin: auto 3rem auto 3rem;
-}
-.smolTitle {
-  font-size: 1.5rem;
-  //margin: auto 3rem auto 3rem;
-}
-.title .smolTitle{
-  text-align: center;
 }
 
 .hoverable:hover {

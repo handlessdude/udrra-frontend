@@ -1,0 +1,87 @@
+.neonText {
+  color: var(--white);
+  text-shadow:
+          0 0 7px var(--white),
+          0 0 10px var(--white),
+          0 0 21px var(--white),
+          0 0 42px var(--lazure),
+          0 0 82px var(--lazure),
+          0 0 92px var(--lazure),
+          0 0 102px var(--lazure),
+          0 0 151px var(--lazure);
+}
+.smolNeonText {
+  color: var(--white);
+  font-family: "Inter", sans-serif;
+  font-size: 2em;
+  text-shadow:
+          0 0 4px var(--white),
+          0 0 7px var(--white);
+}
+.neonBox {
+  color: var(--white);
+  text-shadow:
+          0 0 7px var(--white),
+          0 0 10px var(--white),
+          0 0 42px var(--lazure),
+          0 0 82px var(--lazure);
+}
+.neonText, .smolNeonText {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+.title {
+  font-size: 4.2rem;
+  //margin: auto 3rem auto 3rem;
+}
+.smolTitle {
+  font-size: 1.5rem;
+  //margin: auto 3rem auto 3rem;
+}
+.title .smolTitle{
+  text-align: center;
+}
+
+/* Flickering animation */
+.neonTextMagenta {
+  animation: flicker 1.5s infinite alternate;
+  color: var(--white);
+  border: 0.2rem solid var(--white);
+  border-radius: 2rem;
+  padding: 0.6em;
+  margin-bottom: 0.6em;
+  box-shadow: 0 0 .2rem var(--white),
+  0 0 .2rem var(--white),
+  0 0 2rem var(--magenta),
+    //0 0 0.8rem  #f09,
+  inset 0 0 1.3rem var(--magenta);
+}
+
+@keyframes flicker {
+
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+
+    text-shadow:
+            0 0 4px var(--white),
+            0 0 11px var(--white),
+            0 0 19px var(--white),
+            0 0 40px var(--magenta),
+            0 0 80px var(--magenta),
+            0 0 90px var(--red),
+            0 0 100px var(--magenta),
+            0 0 150px var(--magenta);
+    box-shadow:
+            0 0 .2rem var(--white),
+            0 0 .2rem var(--white),
+            0 0 2rem var(--magenta),
+            inset 0 0 1.3rem var(--magenta);
+
+  }
+
+  20%, 24%, 55% {
+    text-shadow: none;
+    box-shadow: none;
+  }
+}
