@@ -8,12 +8,19 @@
       <i class="fas fa-angle-double-left"></i>
     </div>
 
-    <div  v-if="currentUser"
-          class="navbar-icon log-out-icon hoverable"
-          @click="logOut"
-    >
-      <i class="fas fa-door-open"></i>
+    <div
+        v-if="currentUser"
+        class="side-div flex-centred-row">
+      <h4 class="login">
+        {{currentUser.user_info.login}}
+      </h4>
+      <div  class="navbar-icon log-out-icon hoverable"
+            @click="logOut"
+      >
+        <i class="fas fa-door-open"></i>
+      </div>
     </div>
+
 
   </div>
 </template>
@@ -67,25 +74,35 @@ export default {
   height: var(--navbar-height);
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   padding: var(--navbar-padding) var(--navbar-padding);
 }
 .navbar-icon {
-  position: absolute;
+  //position: absolute;
   padding: 0.75em 0.75em;
   color: rgba(255, 255, 255, 0.7);
   transition: 0.2s linear;
+}
+.side-div {
+  position: absolute;
+  right: 0.75em;
+  //margin-right: 0.75em;
 }
 .navbar-icon:hover {
   color: white;
 }
 .collapse-icon {
+  position: absolute;
   left: 0.75em;
 }
 .log-out-icon {
-  right: 0.75em;
+  //right: 0;
 }
 .rotate-180 {
   transform: rotate(180deg);
   transition: 0.2s linear;
+}
+.login {
+  margin-right: 0.75em;
 }
 </style>

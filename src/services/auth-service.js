@@ -8,7 +8,7 @@ class AuthService {
                 password: user.password
             })
             .then(response => {
-                console.log('in auth service response.data.data: ', response.data.data)
+                //console.log('in auth service response.data.data: ', response.data.data)
                 if (response.data.data.accessToken) {
                     localStorage.setItem('user', JSON.stringify(response.data.data))
                 }
