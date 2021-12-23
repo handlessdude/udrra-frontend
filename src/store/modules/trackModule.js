@@ -2,6 +2,7 @@ import axios from "axios";
 //const api_url = store.state.serverURL+"/tracks";
 //const tracksAxios = store.state.serverAccess
 import { useRoute } from 'vue-router'
+import {useStore} from "vuex";
 export const trackModule = {
     state: () => ({
         track: {},
@@ -18,14 +19,19 @@ export const trackModule = {
                 const route = useRoute()
                 const trackId = route.params.id
                 const url = process.env.VUE_APP_ROOT_API+ `/tracks/${trackId}`
+                const store = useStore()
                 const response = await axios.get(url, {
                     headers: {
-                        "accept": "application/json",
                         //"Content-Type": "application/json",
+                        "accept": "application/json",
+                        "accessToken": store.state.auth.user.accessToken,
+                    },
+                    params: {
+                        "userID": store.state.auth.user.user_info.id
                     }
                 })
-                commit('setTrack', response.data)
-                console.log(response.data)
+                commit('setTrack', response.data.data)
+                console.log(response)
                 return response
             } catch (e) {
                 console.log(e)

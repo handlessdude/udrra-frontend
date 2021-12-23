@@ -59,4 +59,4 @@ export const authModule = {
             state.status.loggedIn = false
         }
     }
-};
+}

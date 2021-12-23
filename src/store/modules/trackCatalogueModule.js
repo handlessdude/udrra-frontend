@@ -1,6 +1,7 @@
 import axios from "axios";
 //const api_url = store.state.serverURL+"/tracks";
 //const tracksAxios = store.state.serverAccess
+import { useStore } from 'vuex'
 
 export const trackCatalogueModule = {
     state: () => ({
@@ -17,16 +18,21 @@ export const trackCatalogueModule = {
                 commit("setLoading", true)
                 //const url = store.state.serverURL+"/tracks"
                 const url = process.env.VUE_APP_ROOT_API+"/tracks"
+                const store = useStore()
                 const response = await axios.get(url, {
                     headers: {
-                        "accept": "application/json",
                         //"Content-Type": "application/json",
+                        "accept": "application/json",
+                        "accessToken": store.state.auth.user.accessToken,
+                    },
+                    params: {
+                        "userID": store.state.auth.user.user_info.id
                     }
                 })
-                commit('setTracks', response.data)
+                commit('setTracks', response.data.data)
+                //console.log(response)
                 console.log(response)
-                console.log(response.data)
-                return response
+                return response.data.data
             } catch (e) {
                 console.log(e)
                 return e
@@ -34,17 +40,11 @@ export const trackCatalogueModule = {
                 commit("setLoading", false)
             }
         },
-        async addTrack({ commit }, title) {
+        async addTrack({ commit }, track) {
             //const url = store.state.serverURL+"/tracks"
             const url = process.env.VUE_APP_ROOT_API+"/tracks"
-            const response = await axios.post(url,
-                {
-                    todo: {
-                        title,
-                        completed: false
-                    }
-                });
-            commit('newTrack', response.data);
+            const response = await axios.post(url, track)
+            commit('newTrack', response.data)
         },
         async deleteTrack({ commit, state }, trackId) {
             //const url = store.state.serverURL+"/tracks"

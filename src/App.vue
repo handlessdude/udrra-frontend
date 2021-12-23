@@ -2,17 +2,12 @@
   <div id="app">
 
     <Navbar/>
-
     <div id="bottom-wrapper">
-
       <Sidebar/>
       <div class="rv-wrapper"
           :style="{ 'left': getSidebarWidth }">
         <router-view/>
       </div>
-<!--            <div class="rv-wrapper" :style="{ 'left': getSidebarWidth }">
-              <h1 class="neonText">всем привет</h1>
-            </div>-->
     </div>
 
   </div>

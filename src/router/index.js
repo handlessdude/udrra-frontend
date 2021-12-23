@@ -1,7 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import Auth from "../views/Auth.vue"
 
 const routes = [
+  {
+    path: '/auth',
+    name: 'Auth',
+    component: Auth
+  },
   {
     path: '/',
     name: 'Home',
@@ -28,19 +34,6 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
-  /*{
-    path: '*',
-    name: "NotFound",
-    component: () => import(/!* webpackChunkName: "NotFound" *!/ '../views/NotFound.vue')
-  }*/
-  /*{
-    path: "/:catchAll(.*)",
-    name: "NotFound",
-    component:  () => import(/!* webpackChunkName: "NotFound" *!/ '../views/NotFound.vue'),
-    meta: {
-      requiresAuth: false
-    }
-  }*/
   {
     path: '/404',
     name: 'NotFound',

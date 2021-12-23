@@ -5,16 +5,15 @@
 
       <h3 v-if="error">{{error}}</h3>
 
-      <div class="form-control" :class="{invalid: !form.email.valid && form.email.touched}">
-        <label for="email">Email</label>
-
+      <div class="form-control" :class="{invalid: !form.login.valid && form.login.touched}">
+        <label for="login" >Login</label>
         <div class="input-container">
-          <i class="fa fa-envelope icon within-input" ></i>
-          <input type="email" id="email" v-model="form.email.value" @blur="form.email.blur">
+          <i class="fas fa-user icon within-input"></i>
+          <input type="text" id="login" v-model="form.login.value" @blur="form.login.blur">
         </div>
 
         <div class="small-wrapper">
-          <small v-if="form.email.touched && form.email.errors.required">Please enter your email.</small>
+          <small v-if="form.login.touched && form.login.errors.required">Please enter your login.</small>
         </div>
 
       </div>
@@ -53,7 +52,7 @@ export default {
     const error = ref()
 
     const { form, isFormValid, resetForm } = useForm({
-      email: {
+      login: {
         value: '',
         validators: { required }
       },
@@ -69,13 +68,13 @@ export default {
     const store = useStore()
     const router = useRouter()
 
-    function handleLogin() {
-      console.log('Email: ', form.email.value, '\nPassword: ', form.password.value)
+    async function handleLogin() {
+      console.log('Login:', form.login.value, '\nPassword:', form.password.value)
 
-      loading.value = true;
+      loading.value = true
 
-      store.dispatch("auth/login", {
-        email: form.email.value,
+      /*store.dispatch("auth/login", {
+        login: form.login.value,
         password: form.password.value
       }).then(
           () => {
@@ -86,7 +85,7 @@ export default {
             router.push("/tracks")
           },
           (error) => {
-            loading.value = false;
+            loading.value = false
             message.value =
                 (error.response &&
                     error.response.data &&
@@ -94,9 +93,34 @@ export default {
                 error.message ||
                 error.toString()
           }
-      )
-    }
+      )*/
 
+      try {
+        const response = await store.dispatch('auth/login', {
+          /*auth: {
+            login: form.login.value,
+            password: form.password.value
+          },*/
+          login: form.login.value,
+          password: form.password.value,
+        })
+        message.value = response.message
+        successful.value = true
+        submitted.value = true
+        await router.push("/tracks")
+      } catch (error) {
+        message.value =
+            (error.response && error.response.data && error.response.data.message) ||
+            error.message ||
+            error.toString()
+        successful.value = false
+      } finally {
+        loading.value = false
+        console.log('signin!\nsubmitted: ', submitted.value,
+            '| success: ', successful.value,
+            '| message: ', message.value)
+      }
+    }
 
     onErrorCaptured(e => {
       error.value = e.message

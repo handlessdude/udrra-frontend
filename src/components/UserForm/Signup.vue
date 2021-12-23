@@ -158,33 +158,42 @@ export default {
     const store = useStore()
     const router = useRouter()
 
-    function handleRegister() {
+    async function handleRegister() {
       console.log('Email: ', form.email.value, '\nPassword: ', form.password.value)
-      store.dispatch('auth/register', {
-        login: form.login.value,
-        email: form.email.value,
-        first_name: form.first_name.value,
-        second_name: form.second_name.value,
-        password: form.password.value
-      }).then(
-          (data) => {
-            message.value = data.message
-            successful.value = true
-            loading.value = false
-            submitted.value = true
-            router.push("/tracks")
-          },
-          (error) => {
-            message.value =
-                (error.response &&
-                    error.response.data &&
-                    error.response.data.message) ||
-                error.message ||
-                error.toString()
-            successful.value = false
-            loading.value = false
-          }
-      )
+      try {
+        const response = await store.dispatch('auth/register', {
+          login: form.login.value,
+          email: form.email.value,
+          first_name: form.first_name.value,
+          second_name: form.second_name.value,
+          password: form.password.value
+        })
+
+        message.value = response.message
+        successful.value = response.success
+        submitted.value = true
+
+        const authResponse = await store.dispatch("auth/login", {
+          login: form.login.value,
+          password: form.password.value
+        })
+
+        message.value = authResponse.message
+        successful.value = authResponse.success
+        await router.push("/tracks")
+      } catch (error) {
+        message.value =
+            (error.response && error.response.data && error.response.data.message) ||
+            error.message ||
+            error.toString()
+        successful.value = false
+      } finally {
+        loading.value = false
+        console.log('signup!\nsubmitted: ', submitted.value,
+                    '| success: ', successful.value,
+                    '| message: ', message.value)
+      }
+
     }
 
     onErrorCaptured(e => {
